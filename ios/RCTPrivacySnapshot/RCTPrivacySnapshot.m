@@ -43,7 +43,7 @@ RCT_EXPORT_MODULE();
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     UIVisualEffectView *view;
     if (self->isDarkMode) {
-      view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+      view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
     } else {
       view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
     }
