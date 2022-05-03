@@ -1,13 +1,13 @@
 {
   "name": "react-native-privacy-snapshot",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Obscure passwords and other sensitive personal information when a react-native app transitions to the background",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kayla-tech/react-native-privacy-snapshot"
+    "url": "https://github.com/guidodipaolo/react-native-privacy-snapshot"
   },
-  "homepage": "https://github.com/kayla-tech/react-native-privacy-snapshot",
+  "homepage": "https://github.com/guidodipaolo/react-native-privacy-snapshot",
   "keywords": [
     "react-native",
     "react-component",
@@ -15,7 +15,7 @@
     "snapshot",
     "secure"
   ],
-  "author": "Roger Chapman",
+  "author": "Guido Di Paolo",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.13.1",
