@@ -10,7 +10,7 @@
 
 @implementation RCTPrivacySnapshot {
     BOOL enabled;
-    BOOL darkTheme;
+    BOOL isDarkMode;
     UIVisualEffectView *obfuscatingView;
 }
 
@@ -41,7 +41,12 @@ RCT_EXPORT_MODULE();
 }
 -(void)show {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+    UIVisualEffectView *view;
+    if (self->isDarkMode) {
+      view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    } else {
+      view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    }
     
    view.frame = keyWindow.bounds;
     self->obfuscatingView = view;
@@ -67,8 +72,9 @@ RCT_EXPORT_MODULE();
 
 #pragma mark - Public API
 
-RCT_EXPORT_METHOD(enabled:(BOOL) _enable) {
-    self->enabled = _enable;
+RCT_EXPORT_METHOD(enabled:(BOOL) _enabled isDarkMode:(BOOL) _isDarkMode) {
+    self->enabled = _enabled;
+    self->isDarkMode = _isDarkMode;
 }
 RCT_EXPORT_METHOD(_show:(BOOL) _doShow) {
     dispatch_async(dispatch_get_main_queue(), ^{
