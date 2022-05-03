@@ -10,6 +10,7 @@
 
 @implementation RCTPrivacySnapshot {
     BOOL enabled;
+    BOOL darkTheme;
     UIVisualEffectView *obfuscatingView;
 }
 
@@ -21,7 +22,7 @@ RCT_EXPORT_MODULE();
     if ((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleAppStateResignActive)
-                                                     name:UIApplicationWillResignActiveNotification
+                                                     name:UIApplicationDidEnterBackgroundNotification
                                                    object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleAppStateActive)
@@ -40,8 +41,9 @@ RCT_EXPORT_MODULE();
 }
 -(void)show {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    view.frame = keyWindow.bounds;
+    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+    
+   view.frame = keyWindow.bounds;
     self->obfuscatingView = view;
 
     [[UIApplication sharedApplication].keyWindow addSubview:self->obfuscatingView];
